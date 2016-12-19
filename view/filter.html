@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Angular Course - Filter</title>
+        <script type="text/javascript" src="../js/angular.min.js"></script>
+        <script type="text/javascript" src="../js/app.js"></script>
+        <script type="text/javascript" src="../js/filter.js"></script>
+    </head>
+    <body>
+        <div>
+            <h3>Using display filter</h3>
+            <div ng-controller="listFruitCtrl">
+                <p>{{description}}</p>
+                <ul ng-repeat="fruit in fruits">
+                    <li>Fruit name: {{fruit.name | uppercase}}</li>
+                    <li>Normal price: {{fruit.priceInDollar | currency}}</li>
+                    <li>Sale price: {{fruit.hotDeal | currency}}</li>
+                    <li>Sale day: {{fruit.day | lowercase}}</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <h3>Create custom filter</h3>
+            <div ng-controller="listFruitCtrl">
+                <p>{{description}}</p>
+                <ul ng-repeat="fruit in fruits">
+                    <li>Fruit name: {{fruit.name | myFilter}}</li>
+                    <li>Normal price: {{fruit.priceInDollar | currency}}</li>
+                    <li>Sale price: {{fruit.hotDeal | currency}}</li>
+                    <li>Sale day: {{fruit.day | myFilter}}</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <h3>Using the orderBy and limitTo filters</h3>
+            <div ng-controller="listFruitCtrl">
+                <p>{{description}}</p>
+                <ul ng-repeat="fruit in fruits | orderBy:'hotDeal' | limitTo:3 ">
+                    <li>Fruit name: {{fruit.name | uppercase}}</li>
+                    <li>Normal price: {{fruit.priceInDollar | currency}}</li>
+                    <li>Sale price: {{fruit.hotDeal | currency}}</li>
+                    <li>Sale day: {{fruit.day | lowercase}}</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <h3>Using number and JSON filters</h3>
+            <div ng-controller="listFruitCtrl">
+                <h4>Number filter</h4>
+                <p>{{3.1451495861985626436109 | number}}</p>
+                <p>{{3.1451495861985626436109 | number:5}}</p>
+                <h4>JSON filter</h4>
+                <p>{{employee}}</p>
+                <p>{{employee | json}}</p>
+            </div>
+        </div>
+        <div>
+            <div ng-controller="listFruitCtrl">
+                <h3>Using date filters</h3>
+                <p>Current date is: {{currentDate}}</p>
+                <p>Current date is: {{currentDate | date:'yyyy-MMM-dd'}}</p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Angular Course</title>
+        <script type="text/javascript" src="../js/angular.min.js"></script>
+        <script type="text/javascript" src="../js/app.js"></script>
+        <script type="text/javascript" src="../js/intro.js"></script>
+        <script type="text/javascript" src="../js/share-multi-controllers.js"></script>
+        <script type="text/javascript" src="../js/share-between-controller.js"></script>
+        <script type="text/javascript" src="../js/create-controllers-by-controller.js"></script>
+    </head>
+    <body>
+        <div ng-controller="introCtrl">
+            <h3>Using scope function</h3>
+            <p>First name: {{firstName}}</p>
+            <p>Last name: {{lastName}}</p>
+            <input type="button" id="setNameBtn" ng-click="setNameCtrl('Tam', 'Nguyen')" value="Set Name"/>
+        </div>
+        <div ng-controller="scopeCtrl">
+            <h3>How to control scope</h3>
+            Enter value 1: <input type="text" id="value1Txt" ng-model="value1" text=""/>
+            Enter value 2: <input type="text" id="value1Txt" ng-model="value2"/>
+            <input type="button" id="divideBtn" ng-click="divide(value1, value2)" value="Divide"/>
+            <p>Result of {{value1}}/{{value2}}: {{result}}</p>
+        </div>
+        <div>
+            <h3>Dot notation</h3>
+            <div ng-controller="parentCtrl">
+                {{name.fName}}
+                <div ng-controller="childCtrl">
+                    {{name.fName}} <input type="text" ng-model="name.fName"/>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3>Share Value between multiple controllers</h3>
+            <div ng-controller="controllerA">
+                <p>{{value}}</p>
+                <p>{{share.ShareMsg}}</p>
+                <input type="text" ng-model="shareValue.ShareMsg"/>
+            </div>
+            <div ng-controller="controllerB">
+                <p>{{value}}</p>
+                <p>{{share.ShareMsg}}</p>
+                <input type="text" ng-model="shareValue.ShareMsg"/>
+            </div>
+        </div>
+        <div>
+            <h3>Share value between controller</h3>
+            <div ng-controller="aCtrl">
+                <p>Data object: {{dataObject}}</p>
+                <p>Color: {{dataObject.color}}</p>
+                <input type="text" ng-model="dataObject.color"/>
+            </div>
+            <div ng-controller="bCtrl">
+                <p>Data object: {{dataObject}}</p>
+                <p>Color: {{dataObject.color}}</p>
+                <input type="text" ng-model="dataObject.color"/>
+            </div>
+        </div>
+        <div>
+            <h3>Create controllers with the controller as syntax</h3>
+            <div ng-controller="firstCtrl">
+                <p>Value from controller 1: {{name}}</p>
+            </div>
+            <div ng-controller="secondCtrl as firstCtrl">
+                <p>Value from controller 2: {{firstCtrl.name}}</p>
+            </div>
+        </div>
+    </body>
+</html>
