@@ -1,0 +1,17 @@
+/*input.ng-dirty.ng-valid {*/
+    /*background-color: chartreuse;*/
+/*}*/
+.ng-scope {
+    color: red;
+}
+
+.ng-binding {
+    color: blue;
+}
+
+.ng-pristine {
+    background-color: aqua;
+}
+.ng-dirty {
+    background-color: cadetblue;
+}

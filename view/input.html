@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>User Input and Validation</title>
+        <script type="text/javascript" src="../js/angular.min.js"></script>
+        <script type="text/javascript" src="../js/app.js"></script>
+        <script type="text/javascript" src="../js/user-input.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/valid-form.css" />
+    </head>
+    <body>
+        <div ng-include="'nav.html'"></div>
+        <div ng-controller="userInputCtrl">
+            <h3>Working with user input</h3>
+            <p>First name: {{model.firstName}}</p>
+            <p>Last name: {{model.lastName}}</p>
+            <p>Enter your name:</p>
+            First name: <input type="text" ng-model="model.firstName">
+            Last name: <input type="text" ng-model="model.lastName">
+        </div>
+        <div ng-controller="userInputCtrl">
+            <h3>Including partial templates</h3>
+            <span ng-include src="myweb">Link to me</span>
+        </div>
+        <div ng-controller="userInputCtrl">
+            <h3>Basic validation form</h3>
+            <form name="userForm" novalidate>
+                First name: <input type="text" ng-model="employee.fName" required /><br>
+                Last name: <input type="text" ng-model="employee.lName" required /><br>
+                Email: <input type="text" ng-model="employee.mail" required /><br>
+                Phone: <input type="text" ng-model="employee.phone" required ng-minlength="10"/><br>
+                Postal code: <input type="text" ng-model="employee.pCode" required ng-pattern="/[A-Z]\d[A-Z] \d[A-Z]\d/" /><br>
+                <input type="button" ng-click="submitForm(userForm)" value="Submit"/><br>
+            </form>
+            <span>{{employee}}</span>
+        </div>
+    </body>
+</html>

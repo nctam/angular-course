@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Output Formatting</title>
+        <script type="text/javascript" src="../js/angular.min.js"></script>
+        <script type="text/javascript" src="../js/app.js"></script>
+        <script type="text/javascript" src="../js/output-formatting.js"></script>
+        <script type="text/javascript" src="../js/filter.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/valid-form.css"/>
+    </head>
+    <body>
+        <div ng-include="'nav.html'"></div>
+        <div ng-controller="outputCtrl">
+            <p>Hello</p>
+            <p>Here is first value: {{greeting}}</p>
+        </div>
+        <div>
+            <form name="form">
+                First name: <input type="text" ng-model="fname"/>
+            </form>
+        </div>
+        <div  ng-controller="listFruitCtrl">
+            <h3>Filter output based on content</h3>
+            <div>
+                <p>Select a day to filter</p><br>
+                <select ng-model="selectFruitByDay">
+                    <option value="Monday">Monday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="">ALL</option>
+                </select>
+            </div>
+            <div>
+                <ul ng-repeat="fruit in fruits | filter: selectFruitByDay">
+                    <li>
+                        <div>
+                            <img ng-src="{{fruit.url}}"/>
+                            <div style="display: inline">
+                                <h3 style="display: inline">{{fruit.name}}</h3>
+                                <p style="display: inline">{{fruit.dateSale}}</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
