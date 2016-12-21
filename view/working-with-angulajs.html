@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Working with AngularJS</title>
+        <script type="text/javascript" src="../js/angular.min.js"></script>
+        <script type="text/javascript" src="../js/app.js"></script>
+        <script type="text/javascript" src="../js/working-with-angular.js"></script>
+    </head>
+    <body>
+        <div ng-controller="workingAngularCtrl">
+            <div>
+                <h3>Changing the Default Curly Braces</h3>
+                <~greeting~>
+            </div>
+            <div>
+                <h3>Watching Scopes for changes using $scope.$watch</h3>
+                <input type="text" ng-model="greeting"/>
+                <p><~greeting~></p><br>
+                <p><~msg~></p>
+            </div>
+            <div>
+                <h3>AngularJS ForEach</h3>
+                <ul ng-repeat="greeting in greetingSentences">
+                    <li>{{greeting}}</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Checking data type</h3>
+            </div>
+        </div>
+        <div ng-controller="usingQALL">
+            <h3>Using $q.all() to handle multiple promises</h3>
+            <p>{{firstName}} {{lastName}} {{middleName}}</p>
+        </div>
+    </body>
+</html>
